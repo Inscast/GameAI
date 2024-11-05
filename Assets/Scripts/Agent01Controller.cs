@@ -7,9 +7,12 @@ using UnityEngine.AI;
 public class Agent01Controller : MonoBehaviour
 {
     [SerializeField] Transform playerT;
+    [SerializeField] LayerMask layer;
     NavMeshAgent agent;
     Animator ani;
     bool hasDone = false;
+    RaycastHit hit;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -53,8 +56,29 @@ public class Agent01Controller : MonoBehaviour
         OffMeshLinkControll();
 
         agent.destination = playerT.position;
+      //  transform.Rotate(0f, 120f * Time.deltaTime, 0f);
         ani.SetFloat("Speed", agent.velocity.magnitude);
+        // GotIt();
     }
+
+    public void GotIt_2()
+    {
+        agent.destination = playerT.position;
+    }
+  //  void GotIt()
+   // {
+   //     float distance = 10f;
+  //      Vector3 start = transform.position + new Vector3(0, 1f, 0);
+  //      if (Physics.Raycast(start, transform.forward, out hit, distance, layer))
+  //      {
+  //          Debug.DrawRay(start, transform.forward * hit.distance, Color.yellow, 2f);
+            // playerT.gameObject.GetComponent<Animator>().SetBool("Jump", true);
+   //     }
+   //     else
+     //   {
+    //        Debug.DrawRay(start, transform.forward * distance, Color.red);
+    //    }
+   // }
     private void OnDrawGizmos()
     {
         if (agent == null)
