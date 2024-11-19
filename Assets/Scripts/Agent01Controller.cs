@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class Agent01Controller : MonoBehaviour
 {
-    [SerializeField] Transform playerT;
+    Transform playerT;
     [SerializeField] LayerMask layer;
     NavMeshAgent agent;
     Animator ani;
@@ -25,6 +25,7 @@ public class Agent01Controller : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         ani = GetComponent<Animator>();
+        playerT = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void OffMeshLinkControll()
